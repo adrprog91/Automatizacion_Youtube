@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -20,36 +21,38 @@ import org.openqa.selenium.WebDriver;
 
 public class Funciones {
 
-/**
- * *************
- * VARIABLES
- * *************
- */
+	/**
+	 * *************
+	 * VARIABLES
+	 * *************
+	**/
 	WebDriver driver;
 	FileInputStream fileInput;
 	File file;
 	Properties prop;
+	BusquedaElementos buscar;
 	
 	
 	
-/**
- * *************
- * CONSTRUCTORES
- * *************
- */
+	/**
+	 * *************
+	 * CONSTRUCTORES
+	 * *************
+	**/
 	public Funciones(WebDriver driver) {
 		this.driver = driver;
+		this.buscar = new BusquedaElementos(this.driver);
 	}
 	
 	public Funciones() {}
 	
 	
 	
-/**
- * *************
- * MÉTODOS
- * *************
- */
+	/**
+	 * *************
+	 * MÉTODOS
+	 * *************
+	**/
 	
 	/**
 	 * Obtiene un archivo properties
@@ -62,6 +65,16 @@ public class Funciones {
 		return prop;
 	}
 	
+	/**
+	 * Pulsa un elemento
+	 */
+	public void clickElemento(By identificador) throws Exception {
+		try {
+			buscar.elementoClickable(identificador).click();
+		} catch (Exception e) {
+			throw new Exception("No se ha podido clickear el elemento");
+		}
+	}
 	
 	
 	

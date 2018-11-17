@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import comun.Base;
 import comun.Funciones;
+import po.Principal;
 
 public class TC_001_Login extends Base {
 
@@ -18,35 +19,43 @@ public class TC_001_Login extends Base {
 			 * *************
 			 * VARIABLES
 			 * *************
-			 */
-				WebDriver driver;
-				Funciones funciones;
-				String navegador;
-				Properties datosGenerales;
+			**/
+			WebDriver driver;
+			Funciones funciones;
+			String navegador;
+			Properties datosGenerales;
+			Principal principal;
+				
 				
 			/**
 			 * ***************
 			 * PRECONDICIONES
 			 * ***************
-			 */
-				// 1. Se obtiene el navegador en el que se realizará la prueba
-				funciones = new Funciones();
-				datosGenerales = funciones.getArchivoProperties("datosGenerales");
-				navegador = datosGenerales.getProperty("navegador");
+			**/
+			
+			// 1. Se obtiene el navegador en el que se realizará la prueba
+			funciones = new Funciones();
+			datosGenerales = funciones.getArchivoProperties("datosGenerales");
+			navegador = datosGenerales.getProperty("navegador");
+			
+			// 2. Se prepara el driver
+			driver = Base.startUp(navegador);
 				
-				// 2. Se prepara el driver
-				driver = Base.startUp(navegador);
+			// 3. Se accede a la url "https://www.youtube.com"
+			Base.abrirURL(datosGenerales.getProperty("URL"));
 				
-				// 3. Se accede a la url "https://www.youtube.com"
-				Base.abrirURL(datosGenerales.getProperty("URL"));
+			
 				
 			/**
 			 * *************
 			 * OPERATIVA
 			 * *************
-			 */
-				
-				
+			**/
+			
+			// 1. Acceder a la pantalla del login
+			principal = new Principal(driver);
+			principal.accederLogin();
+			
 				
 			
 		} catch (Exception e) {
@@ -56,7 +65,7 @@ public class TC_001_Login extends Base {
 			e.printStackTrace();
 		} finally {
 			// 1. se cierra el navegador y se elimina el proceso del driver 
-			Base.dropDown();
+//			Base.dropDown();
 			System.out.println("Se cierra el navegador");
 		}
 	}

@@ -1,7 +1,5 @@
 package comun;
 
-import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,21 +17,20 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public abstract class Base {
 
-/**
- * **********
- * VARIABLES
- * **********
- */
+	/**
+	 * **********
+	 * VARIABLES
+	 * **********
+	**/
 	private static WebDriver driver;
-	Properties datosGenerales;
 	
 	
 	
-/**
- *************
- * MÉTODOS
- *************
- */
+	/**
+	 *************
+	 * MÉTODOS
+	 *************
+	**/
 	
 	/**
 	 *	Crea el driver y abre el navegador indicado por parámetro.
@@ -68,12 +65,14 @@ public abstract class Base {
 		return driver;
 	}
 	
+	
 	/**
 	 * Abre la url indicada por parámetro
 	 */
 	public static void abrirURL(String url) throws Exception {
 		driver.get(url);
 	}
+	
 	
 	/**
 	 * Cierra el navegador y elimina el proceso del driver
