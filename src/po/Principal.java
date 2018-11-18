@@ -1,12 +1,11 @@
 package po;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.Properties;
-import comun.Funciones;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import comun.Funciones;
 
 /**
  * Autor: Adrián Abril
@@ -15,15 +14,13 @@ import org.openqa.selenium.WebDriver;
  */
 
 public class Principal {
-		
+	
 	/**
 	 * *************
 	 * VARIABLES
 	 * *************
 	**/
 	WebDriver driver;
-	FileInputStream fileInput;
-	File file;
 	Funciones funciones;
 	Properties prop;
 		
@@ -32,7 +29,7 @@ public class Principal {
 	 * IDENTIFICADORES
 	 * *************
 	**/
-	private By btnAcceder;
+	private By xpathBtnAcceder;
 		
 	/**
 	 * *************
@@ -62,7 +59,7 @@ public class Principal {
 	public void accederLogin() throws Exception {
 		try {
 			// 1. Se pulsa el botón "ACCEDER"
-			funciones.clickElemento(btnAcceder);
+			funciones.clickElemento(xpathBtnAcceder);
 			System.out.println("Se pulsa el botón 'ACCEDER'");
 			
 		} catch (Exception e) {
@@ -75,7 +72,8 @@ public class Principal {
 	 */
 	private void inicializarIdentificadores() {
 		//btn
-			btnAcceder = By.xpath(prop.getProperty("btnAcceder"));
+			xpathBtnAcceder = By.xpath(prop.getProperty("xpathBtnAcceder"));
+			
 	}
 	
 	

@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * Autor: Adrián Abril
@@ -31,6 +32,7 @@ public class Funciones {
 	File file;
 	Properties prop;
 	BusquedaElementos buscar;
+	WebElement elemento;
 	
 	
 	
@@ -75,6 +77,20 @@ public class Funciones {
 			throw new Exception("No se ha podido clickear el elemento");
 		}
 	}
+	
+	/**
+	 * Rellena un campo de texto
+	 */
+	public void setTxt(By identificador, String txt) throws Exception {
+		try {
+			elemento = buscar.elementoClickable(identificador);
+			elemento.sendKeys(txt);
+			
+		} catch (Exception e) {
+			throw new Exception("No se ha podido rellenar el campo de texto");
+		}
+	}
+	
 	
 	
 	

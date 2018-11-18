@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import comun.Base;
 import comun.Funciones;
+import po.Login;
 import po.Principal;
 
 public class TC_001_Login extends Base {
@@ -25,6 +26,7 @@ public class TC_001_Login extends Base {
 			String navegador;
 			Properties datosGenerales;
 			Principal principal;
+			Login login;
 				
 				
 			/**
@@ -56,6 +58,12 @@ public class TC_001_Login extends Base {
 			principal = new Principal(driver);
 			principal.accederLogin();
 			
+			// 2. Se realiza el login
+			login = new Login(driver);
+			login.doLogin();
+			
+			
+			
 				
 			
 		} catch (Exception e) {
@@ -65,7 +73,7 @@ public class TC_001_Login extends Base {
 			e.printStackTrace();
 		} finally {
 			// 1. se cierra el navegador y se elimina el proceso del driver 
-//			Base.dropDown();
+			Base.dropDown();
 			System.out.println("Se cierra el navegador");
 		}
 	}
